@@ -18,7 +18,7 @@ class LinkedList:
             print(temp.data, end=" ")
             temp = temp.next
 
-if __name__ == '__main__': #chechking if the code is run under the main file
+if __name__ == '__main__': #checking if the code is run under the main file
     llist = LinkedList() #Create linked list object
 
     llist.head = Node(10)
