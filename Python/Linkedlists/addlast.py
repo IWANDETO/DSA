@@ -1,52 +1,50 @@
 #!/usr/bin/python3
-#This file demonstrates adding a node at the end of a lonked list
 
-#Define class node to create and initialize nodes
-class Node:
-    def __init__ (self, data):
+# This is a Python program that inserts a node at the end of a linked list
+
+class Node():
+    def __init__(self, data):
         self.data = data
         self.next = None
 
-#Define a new class that holds the head node of the linked list
-class LinkedList:
-    def __init__ (self):
+class LinkedList():
+    def __init__(self):
         self.head = None
 
-#define method that adds a new node 
-    def addlast(self, val):
+    # Add a method that inserts the node at the end of the list
+    def addLast(self, val):
         newNode = Node(val)
 
-        if self.head == None:
+        if self.head == None: # Assign new node as head of the list if the head node is not present
             self.head = newNode
         else:
-            lastNode = self.head
+            lastNode = self.head # Else assign head to last node
 
-            while lastNode.next != None:
+            while lastNode.next != None: # Iterate through the list until the last existing node is found
                 lastNode = lastNode.next
 
             lastNode.next = newNode
 
     def printList(self):
         temp = self.head
-        print("The Elements in the Linked List are: ")
+        print("The elements in Linked List are: ")
 
-        while (temp):
-            print(temp.data, end = " ")
+        while temp:
+            print(temp.data, end=" ")
             temp = temp.next
-
+        
 if __name__ == "__main__":
     llist = LinkedList()
 
-    print("Inserting Element: 10")
-    llist.addlast(10)
-    print("Inserting Element: 20")
-    llist.addlast(20)
-    print("Inserting Element: 30")
-    llist.addlast(30)
+    print("Adding element 10 to the end of the list")
+    llist.addLast(10)
+
+    print("Adding element 20 to the end of the list")
+    llist.addLast(20)
+
+    print("Adding element 30 to the end of the list")
+    llist.addLast(30)
 
     llist.printList()
-
-
-
 
 
