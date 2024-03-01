@@ -23,26 +23,44 @@ class CircularLinkedList:
 
     def addlast(self, val):
         newNode = Node(val)
-        last = self.head
 
-        if last.next == None:
-            last.next = newNode
+        if self.head == None:
+            newNode.next = newNode
             self.head = newNode
 
         else:
-            while last.next:
+            last = self.head
+
+            while last.next != self.head:
                 last = last.next
 
             last.next = newNode
             newNode.next = self.head
 
     def delete(self, key):
-        temp = Node(key)
-        last = self.head
+        if self.head == None:
+            return
+        
+        if self.head.next == self.head and self.head.data == key:
+            self.head = None
 
-        while last.next != None:
-            if last.data == temp.key:
-                last.next = last.next.next
+        elif self.head.data == key:
+            lastNode = self.head
+
+            while lastNode.next != self.head: 
+                lastNode = lastNode.next
+
+            lastNode.next = self.head.next
+            self.head = self.head.next
+
+        else:
+            current = self.head
+            while current.next != self.head:
+                if current.data == key:
+                    current.next = current.next.next
+                    break
+                current = current.next 
+
 
 if __name__ == "__main__":
     cllist = CircularLinkedList()
@@ -53,8 +71,14 @@ if __name__ == "__main__":
     print("Adding Element 20 to the list: ")
     cllist.addlast(20)
 
-    print("Adding Element30 to the list: ")
+    print("Adding Element 30 to the list: ")
     cllist.addlast(30)
+
+    print("Adding Element 40 to the list: ")
+    cllist.addlast(40)
+
+    print("Adding Element 50 to the list: ")
+    cllist.addlast(50)
 
     cllist.printlist()
 
