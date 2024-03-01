@@ -14,7 +14,7 @@ class CircularLinkedList:
     def printlist(self):
         temp = self.head
 
-        while True:
+        while temp:
             print(temp.data, end=" ")
             temp = temp.next
             if temp == self.head:
@@ -22,15 +22,15 @@ class CircularLinkedList:
 
     def addlast(self, val):
         newNode = Node(val)
-        last = self.head
 
-
-        if last == None:
-            newNode = self.head
+        if self.head == None:
+            newNode.next = newNode
             self.head = newNode
 
         else:
-            while last.next != None:
+            last = self.head
+
+            while last.next != self.head:
                 last = last.next
 
             last.next = newNode
@@ -38,15 +38,22 @@ class CircularLinkedList:
     
 
 
-    def search(self, val):
-        key = Node(val)
+    def search(self, key):
+        if self.head == None:
+            return False
+        
         temp = self.head
 
-        while temp:
-            if temp == key:
-
+        while True:
+            if temp.data == key:
                 return True
             temp = temp.next
+            if temp.next == self.head:
+                break
+
+            return False
+
+        
 
 if __name__ == "__main__":
 
