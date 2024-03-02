@@ -56,7 +56,7 @@ class CircularLinkedList:
         else:
             current = self.head
             while current.next != self.head:
-                if current.data == key:
+                if current.next.data == key:
                     current.next = current.next.next
                     break
                 current = current.next 
