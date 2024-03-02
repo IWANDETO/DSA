@@ -17,6 +17,7 @@ class CircularLinkedList:
         while temp:
             print(temp.data, end=" ")
             temp = temp.next
+            
             if temp == self.head:
                 break
 
