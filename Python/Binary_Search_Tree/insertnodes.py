@@ -10,7 +10,7 @@ class Node():
 
 def insert(root, val): # Function used to insert nodes into the BST
     if root == None: # Check if root is empty, if so assign val to be root
-        return root(val)
+        return Node(val)
     elif root.key < val: # Check if val is greater than root and insert it to the right side of root
         root.right = insert(root.right, val)
     elif root.key > val: # Check if val is less than root and insert it to the left side of root
