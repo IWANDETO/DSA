@@ -16,7 +16,7 @@ def insert(root, val): # Function used to insert nodes into the BST
     elif root.key > val: # Check if val is less than root and insert it to the left side of root
         root.left = insert(root.left, val)
             
-    return
+    return root
 
 
 if __name__ == "__main__":
