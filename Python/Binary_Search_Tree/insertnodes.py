@@ -3,7 +3,7 @@
 # This program illustrates Inserting Nodes in a Binary Search Tree
 
 class Node():
-    def __innit__(self, val): # Method to create and initialise nodes
+    def __init__(self, val): # Method to create and initialise nodes
         self.key = val
         self.left = None
         self.right = None
