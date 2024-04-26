@@ -19,11 +19,11 @@ def insert(root, val): # Function used to insert nodes into the BST
     return root # Return root value to the calling function
 
 def inorder(root):
-    if root == None:
+    if root == None: # Check if BST is empty
         return
-    inorder(root.left)
+    inorder(root.left) # Start with the nodes in the furthest left position
     print(root.key, end=" ")
-    inorder(root.right)
+    inorder(root.right) 
 
 def search(root, skey):
     if root == None:
