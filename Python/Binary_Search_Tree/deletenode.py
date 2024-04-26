@@ -26,6 +26,21 @@ def inorder(root):
     print(root, end=" ")
     inorder(root.right)
 
+
+# def delete(root, key):
+#     if root == None:
+#         return
+
+def getRightMin(root):
+    temp = root
+
+    while temp.left != None:
+        temp = temp.left
+
+    return temp.key
+
+
+
 if __name__ == "__main__":
 
     root = None
