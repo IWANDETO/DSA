@@ -20,9 +20,9 @@ def insert(root, val): # Function used to insert nodes into the BST
 
 
 def inorder(root):
-    if root == None:
+    if root == None: # Check if BST is empty
         return
-    inorder(root.left)
+    inorder(root.left) # Start with the nodes in the furthest left position
     print(root.key, end=" ")
     inorder(root.right)
 
@@ -30,21 +30,21 @@ def inorder(root):
 def deleteNode(root, val):
     if root == None: #Check if BST is empty
         return None    
-    elif root.key < val:
+    elif root.key < val: # Check the right nodes if key is greater than the root
         root.right = deleteNode(root.right, val)
-    elif root.key > val:
+    elif root.key > val: # Check the left nodes if key is less than the root
         root.left = deleteNode(root.left, val)
     else:
-        if root.left and root.right == None:
+        if root.left and root.right == None: # Check if the node is a leaf node
             return None
-        elif root.left == None:
+        elif root.left == None: # Check if only the left node is empty and return the right node is that is the case
             return root.right
-        elif root.right == None:
+        elif root.right == None: # Check if only the right node is empty and return the left node is that is the case
             return root.left
-        else:
+        else: # Find the value of the furthest left node
             rightMin = getRightMin(root)
             root.key = rightMin
-            root.right = deleteNode(root.right, rightMin)
+            root.right = deleteNode(root.right, rightMin) # Delete the furthest left node as it has replaced the node deleted
 
     return root # Return root value to the calling function
 
