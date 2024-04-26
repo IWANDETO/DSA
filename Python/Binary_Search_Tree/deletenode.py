@@ -3,41 +3,60 @@
 # This program illustrates deleting a node in a Binary Search Tree
 
 class Node():
-    def __init__(self, val):
+    def __init__(self, val): # Constructor to create and initialise nodes
         self.key = val
         self.left = None
         self.right = None
 
-def insert(root, val):
-    if root == None:
+def insert(root, val): # Function used to insert nodes into the BST
+    if root == None: # Function used to insert nodes into the BST
         return Node(val)
-    elif root.key < val:
+    elif root.key < val:  # Function used to insert nodes into the BST
         root.right = insert(root.right, val)
-    elif root.key > val:
+    elif root.key > val: # Check if val is less than root and insert it to the left side of root
         root.left = insert(root.left, val)
 
-    return root
+    return root # Return root value to the calling function
 
 
 def inorder(root):
     if root == None:
         return
     inorder(root.left)
-    print(root, end=" ")
+    print(root.key, end=" ")
     inorder(root.right)
 
 
-# def delete(root, key):
-#     if root == None:
-#         return
+def deleteNode(root, val):
+    if root == None: #Check if BST is empty
+        return None    
+    elif root.key < val:
+        root.right = deleteNode(root.right, val)
+    elif root.key > val:
+        root.left = deleteNode(root.left, val)
+    else:
+        if root.left and root.right == None:
+            return None
+        elif root.left == None:
+            return root.right
+        elif root.right == None:
+            return root.left
+        else:
+            rightMin = getRightMin(root)
+            root.key = rightMin
+            root.right = deleteNode(root.right, rightMin)
 
-def getRightMin(root):
-    temp = root
+    return root # Return root value to the calling function
+
+
+
+def getRightMin(root): #Function to traverse and get the node in the furthest left position of the right child for a case where node to be deleted has two children
+    temp = root # Create a temporary variable to hold the furthest left node found
 
     while temp.left != None:
         temp = temp.left
 
-    return temp.key
+    return temp.key # Return the value of the furthest left node
 
 
 
@@ -69,4 +88,14 @@ if __name__ == "__main__":
 print()
 print("The Elements in the Binary Search Tree in order are: ")
 inorder(root) # Print the elements in the BST in order
+print()
 
+print("Deleting Element: ", 50)
+root = deleteNode(root, 50)
+
+print("Deleting Element: ", 300)
+root = deleteNode(root, 300)
+
+print()
+print("The Elements in the Binary Search Tree after deletion are: ")
+inorder(root) # Print the elements in the BST in order
